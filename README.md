@@ -235,35 +235,40 @@ Lo primero que haremos es darle unos className a las etiquetas que queremos darl
 
 Esta no es la única forma que tenemos para hacer estilos, también lo podemos hacer modular, lo cual lo hace mucho más versátil, compacto y ágil a la hora de hacer nuestros componentes, tenemos taillwind, y muchos más para ello
 
- 
+ ![haciendo los estilos para twitter follow card](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/3e27be2f-9e60-4d72-9ed0-69e58c6bfbaf)
+
 Bien ahora vamos a aplicar los estilos que teníamos hechos, pero ahora lo aplicaremos a nuestros className para hacer esto, primero ponemos un . para decirle que está referenciando un className.
 
- 
+ ![estilos de la tarjeta twitter 1](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/75b40450-9c98-4c92-a5a1-9316c2034dca)
+
 Aquí vemos como se ve igual que cuando lo hicimos sin etiquetas.
 
 Bien ya vimos como estilizar nuestros componentes y nuestras cosas, pero ahora tenemos un inconveniente que esto no lo podremos reutilizar, por que entonces tendremos que hacer diferentes propiedades y también estilizar esas propiedades, la magia de React, la base de react son las propiedades y en este ejemplo no podemos reutilizar las propiedades, pero lo vamos a hacer a continuación.
 
- 
+ ![haciendo diferentes propiedades para reutilizarlo](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/c630dc33-fbac-474c-8db2-db804470de14)
+
 Bien lo primero que haremos es crear un nuevo archivo jsx en la carpeta src, este archivo lo llamaremos TwitterFollowCard, para poder reusar nuestros componentes lo mejor es crearlos por aparte del archivo app.
 
-
-
+![function twtiterr followCard](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/61083af6-c921-4057-a43b-19dc02548668)
  
 Ya una vez creado creamos una función con el Nombre del archivo y pasamos lo que teníamos en app a este nuevo componente, pero ahora tenemos cosas diferentes tal como parámetros ({userName, name}) y en cambio de tener directamente el nombre le pasamos los parámetros en los para que nos evalué si le estamos pasando algún parámetro o no.
 
 Bien ahora vamos a explicar por que estamos haciendo esto de esta manera, pasando parámetros, es bastante simple, para poder reutilizarlo, porque puede que tengamos una base de datos y queremos que haga un ramdon en el Twitter follow card y no podemos pasarle siempre los mismos valores, entonces para ello le pasamos como parámetros los valores que queremos que evalué para que después estos sean ingresados en otro componente, en el src estamos haciendo en comillas literales por que esta es la forma correcta que tiene react para evaluar una función, sino lo hacemos asi nos arrojara un error o simplemente lo tomara como un string
 
- 
+ ![importando en App](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/2f2f8a84-e118-4022-ac10-d7a222740aff)
+  
 Ahora asi es como se vera nuestro archivo App.Jsx, esto quiere decir que solo estamos importando el componente para poderlo usar en app y en el main.jsx hacemos el render de app, asi que todos los componentes lo vamos a pasar a nuestra App.Jsx y a su vez main.jsx renderiza todo lo que es App.Jsx
 
- 
+ ![ya con estilos primera parte](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/7a023909-5ac0-4494-aec0-b36681a7e4c3)
+
 Asi se verá nuestra follow card sin pasarle los parámetros, pero esto es completamente normal por que para pasarle los parámetros tenemos que hacerlo en App.Jsx.
 
-
+![pasandole los parametros a la twitterFollowCard](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/4dbb09aa-4455-430b-9fa7-3f6d33d65300)
  
 Y aquí, recordemos que usamos el React. Fragment para poder usar dos o mas del mismo componente, esta vez estamos usando las direccionales vacías porque es otra forma de hacer la sintaxis y además lo hace más legible, más limpio y más simple, y para pasar los parámetros lo hacemos como si lo hiciéramos con una etiqueta, lo podemos hacer con strings como lo vemos acá o también como una evaluación.
 
- 
+ ![viendo nuestro twiter followcard](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/1fc2f88e-34f1-4f35-9313-4b9c1915e9de)
+
 Y asi se vería nuestra Twitter card, pero aun nos falta más cosas por hacer como cambiar el estado del botón seguir y otras pequeñas cosas que veremos que nos ayudara.
 
 Bien ya que tenemos nuestro card vemos que tenemos problemas con nuestros estilos, que el botón están muy cerca y otros detalles, vamos a arreglarlo
