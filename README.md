@@ -273,32 +273,40 @@ Y asi se vería nuestra Twitter card, pero aun nos falta más cosas por hacer co
 
 Bien ya que tenemos nuestro card vemos que tenemos problemas con nuestros estilos, que el botón están muy cerca y otros detalles, vamos a arreglarlo
 
-
+![pasando a un section](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/aa1ff7f9-817f-45f1-a752-b4a4e946546f)
     
 Bien entonces en vez de tener un react Fragment también podemos contener nuestro componente en un div, un section un nav, etc, en este caso vamos a usar un section y le vamos a dar un className para solo este section ya que solo necesitamos usarlo en este caso solo para este componente por que puede pasar que necesitemos el componente en otra parte, los estilos también se aplicarían a este.
 
+![estilos a  APP](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/50b49a63-c600-442a-9e00-e02e5ef3dcb6)
  
 Ahora creamos nuestros estilos aparte para nuestro componente y ahora estos estilos solo se aplicarán a nuestro section con un className= ‘App’ y asi ya tenemos un componente propio, miremos como queda.
 
-
-
+![estilos arreglados 1](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/8ccb667e-295e-4196-b806-b74e4bd03fcc)
  
 Y asi es como se vería nuestro componente con sus nuevos estilos, pero aun nos falta algo, nos falta otro parámetro por aplicar y es el parámetro de isFollowing, pero como esto es un booleano vamos a aprender como pasarlo a nuestro componente, pero esto es muy sencillo.
 
- 
+ ![pasando booleanos a nuestro twitterCard](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/0ee78aff-6e08-49cb-8763-53425b05bc8a)
+
 Aquí vemos como pasarle un booleano a nuestro componente, cuando lo pasamos asi normalmente lo toma como un true y si necesitamos que sea un false pues lo pasamos como una evaluación, pero esto no es dinámico, pero por ahora lo dejaremos asi, ya que si notaste anteriormente falta el @ en el userName vamos a ver cómo hacerlo pasándole funciones.
 
- 
+ ![pasando nuevos parametros](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/77203f4f-3c85-4ae4-b7a5-db0d9b16e209)
+
 Bien ahora le pasamos a nuestra función un formatUserName y en donde teníamos userName ahora ponemos el formatUserName y el userName como una función, si en react también puedes pasarle funciones, ahora vamos a nuestra App.Jsx para ver como pasamos esta función.
 
- 
+ ![format funcion](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/d5fd0bad-180a-43ec-ad08-1f08f80a3af8)
+
 Bien ahora creamos una funcion y la llamaremos en este caso format y le vamos a pasar los siguientes parámetros, luego en el return le pasamos el formatUserName la funcion que tenemos en app y asi ya tendremos el @ en nuestro render
-              
+
+![mostrando como queda con el @](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/896157a2-b37c-41d2-8868-70b19f4d486e)
+
 Y asi vemos como pasarle funciones como props y no solo podemos pasar funciones, sino que también le podemos pasar elementos, vimos una forma de pasarle funciones, pero para algunos nos puede parecer una forma muy tediosa de hacerlo, vamos a ver como lo podemos mejorar con los elementos.
 
+ ![pasando elementos como props](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/9bebcc78-9d15-4cd4-8049-b978a5bf118f)
+
+Aquí tenemos en formattedUserName le estamos pasando un elemento como props en app y luego vamos a ver en nuestro archivo Twitter card vamos a pasarle el formattedUserName para que lo evalué, en este caso le pasamos el elemento como marcusS1090 y lo haremos sin las llaves para explicar la diferencia entre un elemento 
  
-Aquí tenemos en formattedUserName le estamos pasando un elemento como props en app y luego vamos a ver en nuestro archivo Twitter card vamos a pasarle el formattedUserName para que lo evalué, en este caso le pasamos el elemento como marcusS1090 y lo haremos sin las llaves para explicar la diferencia entre un elemento y 
- 
+![evaluando formmat](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/82606402-198a-48f8-8b54-c9760f178782)
+
 Aquí vemos lo que decíamos anteriormente, por que pasa esto, esto sucede por que en Twitter card le estamos diciendo que evalué el formattedUserName y en el App.Jsx le estamos diciendo que formattedUserName tiene un elemento para pasarlo como props.
 
 Bien ahora vamos a ver cual es la diferencia entre elemento y componente, pues lo podríamos decir que un componente es una factoría de elementos, es decir que es una funcion que al ejecutarla te devuelve un elemento y el elemento es lo que renderiza react.
@@ -306,13 +314,12 @@ Bien ahora vamos a ver cual es la diferencia entre elemento y componente, pues l
 Props especial children:
 Teniendo de ejemplo en la imagen anterior vemos que el elemento button está envolviendo un texto button (seguir) con el elemento button, pero también tenemos ese aside envolviendo el elemento button que a la vez envuelve el texto, esto se le denomina children, esto también se puede ver a nivel de componentes por ejemplo puedes quitar el name y envolverlo en con el componente.
 
-
-
-
+![sections como userName](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/f13980ce-28f8-47a2-9649-54004fa95c01)
  
 Como lo decíamos anteriormente esta es la manera en la que podemos envolver con un componente un children, pero si vamos a ver no nos renderizara nada por que tenemos que decirle que es un parámetro children
 
- 
+ ![parametro el children](https://github.com/MarcusS1090/ejerciciosdeReact/assets/110134731/b9cb8db4-a89d-4992-b801-2a598b79e98d)
+
 Aquí ponemos como parámetro el children y como ya no necesitamos el name, entonces lo eliminamos.
 
  
