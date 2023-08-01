@@ -471,8 +471,123 @@ Entonces este será nuestro final de la primera parte del curso de React, en la 
  
 Sección 2:
 
-  
-  
-  
-  
-  
+en esta seccion vamos a crear un videojuego y una aplicacion para aprender useState y useEffect, vamos a aprender a manejar estados, logica de programacion, renderizado condicional, renderizado de listas, eventos y guardar en el local storage.
+
+Lo primero que haremos es crear una nueva aplicaion con vite igual que lo hicimos anteriormente y una vez todo hecho vamos a cambiar y a quitar algunas cosas que no necesitamos, lo primero que haremos es ir a nuestro App.jsx y eliminar todo lo que esta en el return y pondremos un h2 o lo que quieran.
+
+(1.PNG)
+
+a mi se me ve algo asi.
+
+continuando para no gastar tiempo con los estilos,dentro de esta carpeta de este repositorio encontraras los estilos para nuestro 3 en linea, que me copie de Midudev(el cual gracias a el estoy haciendo esto para poder repasar todo lo que necesito), muy bien siguiendo con lo que es importante recuerda echarle un vistazo a los estilos que estan en index.css y escribir bien los className para poder usarlos de manera mas apropiada.
+
+bien lo primero que haremos es empezar por los turnos que vamos a tener osea tendremos que crear una constante para los turnos, tu los puedes llamar como quieras e incluso puedes colocar simbolos,lo haremos mas adelante, por ahora voy a hacerlo de esta manera
+
+(2.PNG)
+
+algo asi se veria nuestra constante.
+
+ahora lo proximo que haremos es dibujar nuestro tablero y nuestro tablero sera un array de 9 posiciones y lo vamos a llenar con null por que mas adelante lo llenaremos con los turnos.
+
+![Array del tablero](3.PNG)
+
+luego de hacer nuestro array vamos a renderizarlo en un main y vamos a usar el className 'board' y aqui vamos a renderizar nuestro tablero
+
+![renderizando el tablero](4.PNG)
+
+bien vamos a crear un section donde tendremos el className 'game',dentro del section abrimos llaves (recordemos para que abrimos las llaves), con esto vamos a recorrer el array y vamos a renderizar nuestras celdas con un className 'cel' y luego dentro del div vamos a crear un span con el className 'cell__content' y dentro del span vamos a decirle que nos renderize nuestro {index}, bien vamos a ver de mejor forma como se hace
+
+![section](5.PNG)
+
+esta es la forma en la que lo haremos y vamos a ver como se ve en el navegador
+
+![el render en la web](5.1.PNG)
+
+asi podemos ver como queda renderizado en el navegador,esto lo hicimos para saber donde tenemos las posiciones de nuestras celdas pero pues solo lo hacemos de manera visual ahora vamos a hacer nuestras casillas
+
+lo primero que haremos para renderizar nuestras casillas es crear un componente que lo llamaremos Square este componente tendra unas propiedades que son el children que sera lo que tiene dentro del tablero si es X o O, updateBoard para que nos actulice la posicion del tablero cada que hacemos click, index para saber el cuadrado que indice es,esto lo vamos a retornar con un contenedor div con el className 'square', esto con el fin de que poder estructurar de mejor manera nuestra app y hacerla mediante componentes, entonces en vez de reenderizar el div que teniamos dentro de nuestra board.map renderizaremos Square, veamoslo de manera visual
+
+![con el componente Square](6.PNG)
+
+y esta es la manera en la que se vera en el navegador
+
+![render en la web con square](6.1.PNG).
+
+y asi es como se vera nuestro 3 en linea renderizado en el navegador.
+
+bien lo siguiente que haremos es quitar el indice para que no se muestre dentro de nuestos cuadros, pero esto lo haremos con los estados de react.
+
+Estados en React:
+Los estados en react son una de las maneras en las que se procesan datos en esta libreria de javascript. Mientras que los props son los datos que podemos pasarle a un componente o elemento React desde afuera, un estado se conforma por los datos internos que un componente puede manejar.
+
+en pocas palabras se puede decir que un estado es un almacen de datos mutables de componentes y que ademas son autonomos.
+
+entonces como nos sirve esto para nuestro ejercicio? bueno es que los estados son muy importante o parte fundamental de react.
+
+por ahora lo que haremos es mover nuestro array board a dentro de la function App y vamos a crear un estado y le vamos a pasar el estado inicial que es nuestro array
+
+![haciendo un estado](7.PNG)
+
+bien ahora que tenemos nuestro estado vamos a desglozarlo, en vez de tenter el array guardado en una variable como lo teniamos anteriormente, pasamos este array como el estado inicial en useState y ahora ese estado lo tenemos que guardar en un array de dos elementos que es en este caso board y setBoard, el setBoard nos servira mas adelante para darle el funcionamiento a nuestro estado.
+
+pero y ahora como sabremos a quien le toca el siguiente turno? bueno necesitamos otro estado para saber eso,entonces recordemos, el useState le pasamos el valor inicial, este sera un array de dos posiciones,en la primera posicion el valor del estado y en la segunda posicion como actualizar el estado, en este caso vamos a inicializarlo con el turno de la  X
+
+![state turn](8.PNG)
+
+una vez tenemos hecho lo primordial ahora necesitamos saber quien tiene el turno visualmente,menos mal que con react eso no es un problema vamos a ver como hacerlo en la siguiente imagen
+
+![section con turno](9.PNG)
+
+entonces como vemos en la imagen vamos a crear otro section con un className 'turn' dentro de nuestro section vamos a llamar a nuestro componente Square y le vamos a pasar una prop que la llamaremos isSelected={ turn === TURNS.X} y dentro de el componente vamos a llamar nuestro TURNS.X y lo mismo va mos a hacer con el circulo, por que esto, bueno el turn viene del estado que creamos arriba y que le decimos que si el valor es la X entonces que nos muestre la X y abajo que si su valor es el circulo (O) entonces que muestre el circulo,ya con esto nos renderizara los turnos
+
+![render el turno parte 1](9.1.PNG)
+
+bien una vez teniendo reenderizado a quien le toca el turno, pero cuando le damos click esto sigue sin funcionar, entonces que podremos hacer aqui, en el Square que es el componente que hemos hecho, le podemos pasar una prop que la llamaremos updatedBoard y le pasamos la funcion updatedBoard, son dos cosas diferentes, para que cuando queramos,dentro del Square se actualice y ejecute realmente el update,bien veamoslo como se veria en nuestro codigo.
+
+![updatedBoard en Square](10.PNG)
+aqui vemos que le pasamos en el prop la funcion del updatedBoard
+
+![creando la funcion updatedBoard](10.1.PNG)
+por que le pasamos la funcion y no la ejecucion de la funcion,bueno esto por que tendria un problema por que al renderizar se ejecutaria la funcion 9 veces, esto no es lo que queremos por que lo que queremos es que la funcion se ejecute hasta que el usuario haga click, si le pasas la ejecucion de la funcion lo estarias rompiendo, tu lo que quieres es ejecutarlo solo cuando lo necesitas, solo cuando se hace click.
+
+Bien ya sabiendo esto tenemos que crear una constante dentro de nuestra funcion updatedBoard que nos de un nuevo turno cada vez que le damos click
+
+![constantes de los nuevos turnos](11.PNG)
+
+Entonces con lo que tenemos de nuestra funcion es, que cada vez que hagamos click en uno de los cuadrados, cambiaremos de turno y para eso vamos a usar el setTurn y le pasaremos nuestra constante como el valor, aqui lo exponemos de manera grafica.
+
+![pasando el setTurn](11.1.PNG)
+
+bien para ahora saber si podemos cambiar de turno haremos lo siguiente, dentro de nuestro componente Square, vamos a crear una funcion que se llamara handleClick y dentro de esta funcion ejecutamos la funcion updatedBoard.
+
+![funcion handleClick](12.PNG)
+
+y para ver que esta funcion se este efectuando pues,simplemente en el return de nuestro componente Square dentro del div le damos una propiedad onClick y dentro de esta le pasamos la funcion handleClick
+
+![propiedad onClick](12.1.PNG)
+asi deberia quedar nuestro componente Square.
+
+Lo proximo que haremos es que le pasaremos en nuestra funcion updatedBoard le pasaremos un parametro que sera el index, para que asi sepa en que posicion se ha efectuado el turno.
+
+![pasandole el index](13.PNG)
+asi de esta manera y tambien lo haremos con el handleClick
+
+![pasando el parametro](13.1.PNG)
+asi como lo hacemos aca.
+
+bien lo siguiente que haremos es dentro de nuestra funcion updatedBoard es actualizar el tablero y esto lo haremos de la siguiente manera,entonces creamos una constante que se va a llamar newBoard y vamos a decirle que el newBoard es igual a board(este board nace de nuestro estado del array), luevo vamos a poner que el newBoard[index] es igual al valor del turno actual,asi el usuario que le ha dado click en esa posicion pues ha guardado el turno en esa posicion y falta solo actualizarlo lo cual llamamos nuestro estado setBoard y le pasamos el parametro newBoard,vamos a verlo de manera grafica para que sea mas entendible.
+
+![actualizando el tablero](14-1.PNG)
+como vimos aqu
+
+para los que se pregunta por que pase el arra de board de esta manera [...board] esto lo hice por que jamas debemos mutar las props ni los estados,tenemos que tratarlo como si fuesen inmutables, entonces quiere decir que los arrays no se tienen que modificar el valor que tiene sino que siempre se debe crear un nuevo array con el valor, esto se puede hacer en este caso con spread Operator o rest operator,en este caso usamos el spread Operator [...board], esto quiere decir segun lo que tenemos aca que cada que todos los elementos que esten dentro del board los meta en un nuevo array.
+
+bien pero ahora que podemos marcar nuestro tablero,este sobreescribe donde estaban las marcas,asi que con un simple if le diremos que si el board[index] entonces que nos retorne, esto quiere decir que si ya tiene algo en la posicion que lo marcamos pues que no sobreescriba
+
+![if del board](15.PNG)
+
+lo siguiente que haremos es saber cuando vamos a ganar y eso lo sabremos con un estado entonces crearemos un estado en nuestro padre de la siguiente manera
+
+![creando un estado para el ganador](16.PNG)
+
+Aqui sigue nuestra logica de programacion para saber como hacer el ganador aqui usted decide como hacerlo,como somos inexpertos y estamos aprendiendo vamos a hacerla de la manera facil, vamos a crear una constante llamado WINNER_COMBOS y ahi dentro tendremos un array donde tendremos todas nuestas combinaciones ganadoras 
